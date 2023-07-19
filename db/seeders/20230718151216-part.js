@@ -1,41 +1,90 @@
+"use strict";
+const { ObjectId } = require("mongodb")
 
-export function up(models, mongoose) {
-  /*
-    Add altering commands here.
-    Return a promise to correctly handle asynchronicity.
-
-    Example:
-    return models.Test.bulkWrite([
+module.exports = {
+  up: (models) => {
+    return models.Part.bulkWrite([
       {
         insertOne: {
           document: {
-            name: 'first test'
-          }
-        }
-      }
-    ]).then(res => {
-    // Prints "1"
-    console.log(res.insertedCount);
-  });
-  */
-}
-export function down(models, mongoose) {
-  /*
-    Add reverting commands here.
-    Return a promise to correctly handle asynchronicity.
+            _id: ObjectId('64b7badac922d0e2feec1720'),
+            description: "Pipe001_Part900",
+            machine: { _id: ObjectId('64b7b190b99bd276cbfc06d4') }
+          },
+        },
+      },
+      {
+        insertOne: {
+          document: {
+            _id: ObjectId('64b7badac922d0e2feec1721'),
+            description: "Pipe001_Part901",
+            machine: { _id: ObjectId('64b7b190b99bd276cbfc06d4') }
+          },
+        },
+      },
+      {
+        insertOne: {
+          document: {
+            _id: ObjectId('64b7badac922d0e2feec1722'),
+            description: "Pipe001_Part902",
+            machine: { _id: ObjectId('64b7b190b99bd276cbfc06d4') }
+          },
+        },
+      },
+      {
+        insertOne: {
+          document: {
+            _id: ObjectId('64b7badac922d0e2feec1723'),
+            description: "Pipe001_Part903",
+            machine: { _id: ObjectId('64b7b190b99bd276cbfc06d4') }
+          },
+        },
+      },
+    ]).then((res) => {
+      console.log(res.insertedCount)
+    })
+  },
 
-    Example:
-    return models.Test.bulkWrite([
+  down: (models) => {
+    return models.Part.bulkWrite([
       {
         deleteOne: {
           filter: {
-            name: 'first test'
-          }
-        }
-      }
-    ]).then(res => {
-    // Prints "1"
-    console.log(res.deletedCount);
-    });
-  */
+            _id: ObjectId('64b7badac922d0e2feec1720'),
+            description: "Pipe001_Part900",
+            machine: { _id: ObjectId('64b7b190b99bd276cbfc06d4') }
+          },
+        },
+      },
+      {
+        deleteOne: {
+          filter: {
+            _id: ObjectId('64b7badac922d0e2feec1721'),
+            description: "Pipe001_Part901",
+            machine: { _id: ObjectId('64b7b190b99bd276cbfc06d4') }
+          },
+        },
+      },
+      {
+        deleteOne: {
+          filter: {
+            _id: ObjectId('64b7badac922d0e2feec1722'),
+            description: "Pipe001_Part902",
+            machine: { _id: ObjectId('64b7b190b99bd276cbfc06d4') }
+          },
+        },
+      },
+      {
+        deleteOne: {
+          filter: {
+            _id: ObjectId('64b7badac922d0e2feec1723'),
+            description: "Pipe001_Part903",
+            machine: { _id: ObjectId('64b7b190b99bd276cbfc06d4') }
+          },
+        },
+      },
+    ]).then((res) => {
+      console.log(res.deletedCount)
+    })
+  },
 }

@@ -1,7 +1,7 @@
 import { Box, Flex, useToast } from "@chakra-ui/react"
 import { useEffect } from "react"
 
-export default function UserCard({ id }) {
+export default function Card({ id }) {
   const toast = useToast()
   const { name, email, phone } = user
   const toastMessage = (title, message, status) => {
@@ -13,17 +13,21 @@ export default function UserCard({ id }) {
       isClosable: true,
     })
   }
-  const onDelete = (userId) => {
+  const onDelete = (objId) => {
     try {
       toastMessage("User Deletion", "Successful", "success")
     } catch (err) {
-      toastMessage("Error Catched.", (err?.message ?? "Opps there seems to be an error"), "error")
+      toastMessage(
+        "Error Catched.",
+        err?.message ?? "Opps there seems to be an error",
+        "error"
+      )
     }
   }
-  useEffect(()=>{
+  useEffect(() => {
     if (!!error) toastMessage("Error Catched.", error, "error")
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[error])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [error])
 
   return (
     <Flex
@@ -44,8 +48,7 @@ export default function UserCard({ id }) {
           position="relative"
           overflow="hidden"
           roundedTop="lg"
-        >
-        </Box>
+        ></Box>
 
         <Box p="6">
           <Box fontWeight="semibold" as="h4" lineHeight="tight" isTruncated>

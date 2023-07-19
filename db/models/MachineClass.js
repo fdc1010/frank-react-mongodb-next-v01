@@ -1,6 +1,7 @@
-const { SchemaTypes } = require("mongoose")
+"use strict";
+const { SchemaTypes } = require("mongoose");
 
-module.exports = (mongoose) => {
+module.exports = mongoose => {
   const { ObjectId } = SchemaTypes
   const newSchema = new mongoose.Schema(
     {
@@ -9,8 +10,10 @@ module.exports = (mongoose) => {
         ref: "FactoryType"
       },
       class: [{
-        type: ObjectId,
-        ref: "MachineAllClass"
+        _id: {
+          type: ObjectId,
+          ref: "MachineAllClass"
+        }
       }],
     },
     {

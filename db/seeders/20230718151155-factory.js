@@ -1,41 +1,34 @@
+"use strict";
+const { ObjectId } = require("mongodb")
 
-export function up(models, mongoose) {
-  /*
-    Add altering commands here.
-    Return a promise to correctly handle asynchronicity.
-
-    Example:
-    return models.Test.bulkWrite([
+module.exports = {
+  up: (models) => {
+    return models.Factory.bulkWrite([
       {
         insertOne: {
           document: {
-            name: 'first test'
-          }
-        }
-      }
-    ]).then(res => {
-    // Prints "1"
-    console.log(res.insertedCount);
-  });
-  */
-}
-export function down(models, mongoose) {
-  /*
-    Add reverting commands here.
-    Return a promise to correctly handle asynchronicity.
+            type: { _id: ObjectId('64b78ee9303d4dbbc1fff3b3') },
+            city: { _id: ObjectId('64b78ee9303d4dbbc1fff3ad') },
+          },
+        },
+      },
+    ]).then((res) => {
+      console.log(res.insertedCount)
+    })
+  },
 
-    Example:
-    return models.Test.bulkWrite([
+  down: (models) => {
+    return models.Factory.bulkWrite([
       {
         deleteOne: {
           filter: {
-            name: 'first test'
-          }
-        }
-      }
-    ]).then(res => {
-    // Prints "1"
-    console.log(res.deletedCount);
-    });
-  */
+            type: { _id: ObjectId('64b78ee9303d4dbbc1fff3b3') },
+            city: { _id: ObjectId('64b78ee9303d4dbbc1fff3ad') }
+          },
+        },
+      },
+    ]).then((res) => {
+      console.log(res.deletedCount)
+    })
+  },
 }

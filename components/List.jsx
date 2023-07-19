@@ -2,12 +2,12 @@ import { Box, SimpleGrid } from '@chakra-ui/react'
 import React from 'react'
 import { cardVariant, parentVariant } from "@utils/motion"
 import { motion } from "framer-motion"
-import UserCard from "@components/UserCard"
+import Card from "@components/Card"
 
 const MotionSimpleGrid = motion(SimpleGrid)
 const MotionBox = motion(Box)
 
-export default function UserList({ userIds }) {
+export default function List({ lists }) {
 
   return (
     <Box>
@@ -20,9 +20,9 @@ export default function UserList({ userIds }) {
         initial="initial"
         animate="animate"
       >            
-        {userIds.map((id, i) => (
+        {lists.map((id, i) => (
           <MotionBox variants={cardVariant} key={i}>
-            <UserCard id={id} />
+            <Card id={id} />
           </MotionBox>
         ))}
       </MotionSimpleGrid>

@@ -1,41 +1,80 @@
 
-export function up(models, mongoose) {
-  /*
-    Add altering commands here.
-    Return a promise to correctly handle asynchronicity.
+"use strict";
+const { ObjectId } = require("mongodb");
 
-    Example:
-    return models.Test.bulkWrite([
+module.exports = {
+  up: models => {
+    return models.FactoryType.bulkWrite([
       {
         insertOne: {
           document: {
-            name: 'first test'
+            _id: ObjectId('64b78ee9303d4dbbc1fff3b2'),
+            name: 'Pipe and Box'
+          }
+        }
+      },
+      {
+        insertOne: {
+          document: {
+            _id: ObjectId('64b78ee9303d4dbbc1fff3b3'),
+            name: 'Steel'
+          }
+        }
+      },
+      {
+        insertOne: {
+          document: {
+            _id: ObjectId('64b78ee9303d4dbbc1fff3b4'),
+            name: 'Precast'
+          }
+        }
+      },
+      {
+        insertOne: {
+          document: {
+            _id: ObjectId('64b78ee9303d4dbbc1fff3b5'),
+            name: 'Exterior'
           }
         }
       }
     ]).then(res => {
-    // Prints "1"
-    console.log(res.insertedCount);
-  });
-  */
-}
-export function down(models, mongoose) {
-  /*
-    Add reverting commands here.
-    Return a promise to correctly handle asynchronicity.
+      console.log(res.insertedCount);
+    });
+  },
 
-    Example:
-    return models.Test.bulkWrite([
+  down: models => {
+    return models.FactoryType.bulkWrite([
       {
         deleteOne: {
           filter: {
-            name: 'first test'
+            name: 'Pipe and Box'
+          }
+        }
+      },
+      {
+        deleteOne: {
+          filter: {
+            name: 'Steel'
+          }
+        }
+      },
+      {
+        deleteOne: {
+          filter: {
+            name: 'Precast'
+          }
+        }
+      },
+      {
+        deleteOne: {
+          filter: {
+            name: 'Exterior'
           }
         }
       }
     ]).then(res => {
-    // Prints "1"
-    console.log(res.deletedCount);
+      console.log(res.deletedCount);
     });
-  */
-}
+  }
+  
+};

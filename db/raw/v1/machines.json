@@ -1,0 +1,12 @@
+{
+    "_id" : ObjectId("64b7b190b99bd276cbfc06d4"),
+    "machine_class" : ObjectId("64b78ee9303d4dbbc1fff3b7"),
+    "created_at" : ISODate("2023-07-19T10:30:46.372+0000"),
+    "updated_at" : ISODate("2023-07-19T10:30:46.372+0000")
+}
+{
+    "_id" : ObjectId("64b7b190b99bd276cbfc06d5"),
+    "machine_class" : ObjectId("64b78ee9303d4dbbc1fff3ba"),
+    "created_at" : ISODate("2023-07-19T10:30:46.372+0000"),
+    "updated_at" : ISODate("2023-07-19T10:30:46.372+0000")
+}

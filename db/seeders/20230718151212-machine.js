@@ -1,41 +1,50 @@
+"use strict";
+const { ObjectId } = require("mongodb")
 
-export function up(models, mongoose) {
-  /*
-    Add altering commands here.
-    Return a promise to correctly handle asynchronicity.
-
-    Example:
-    return models.Test.bulkWrite([
+module.exports = {
+  up: (models) => {
+    return models.Machine.bulkWrite([
       {
         insertOne: {
           document: {
-            name: 'first test'
-          }
-        }
+            _id: ObjectId('64b7b190b99bd276cbfc06d4'),
+            machine_class: { _id: ObjectId('64b78ee9303d4dbbc1fff3b7') }
+          },
+        },
+      },
+      {
+        insertOne: {
+          document: {
+            _id: ObjectId('64b7b190b99bd276cbfc06d5'),
+            machine_class: { _id: ObjectId('64b78ee9303d4dbbc1fff3ba') }
+          },
+        },
       }
-    ]).then(res => {
-    // Prints "1"
-    console.log(res.insertedCount);
-  });
-  */
-}
-export function down(models, mongoose) {
-  /*
-    Add reverting commands here.
-    Return a promise to correctly handle asynchronicity.
+    ]).then((res) => {
+      console.log(res.insertedCount)
+    })
+  },
 
-    Example:
-    return models.Test.bulkWrite([
+  down: (models) => {
+    return models.Machine.bulkWrite([
       {
         deleteOne: {
           filter: {
-            name: 'first test'
-          }
-        }
+            _id: ObjectId('64b7b190b99bd276cbfc06d4'),
+            machine_class: { _id: ObjectId('64b78ee9303d4dbbc1fff3b7') }
+          },
+        },
+      },
+      {
+        deleteOne: {
+          filter: {
+            _id: ObjectId('64b7b190b99bd276cbfc06d5'),
+            machine_class: { _id: ObjectId('64b78ee9303d4dbbc1fff3ba') }
+          },
+        },
       }
-    ]).then(res => {
-    // Prints "1"
-    console.log(res.deletedCount);
-    });
-  */
+    ]).then((res) => {
+      console.log(res.deletedCount)
+    })
+  },
 }

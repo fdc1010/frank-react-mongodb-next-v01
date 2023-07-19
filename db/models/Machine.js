@@ -1,3 +1,4 @@
+"use strict";
 const { SchemaTypes } = require("mongoose");
 
 module.exports = mongoose => {
@@ -8,11 +9,7 @@ module.exports = mongoose => {
     machine_class: {
       type: ObjectId,
       ref: "MachineClass"
-    },
-    parts: [{
-      type: ObjectId,
-      ref: "Part"
-    }]
+    }
   }, {
     timestamps: {
       createdAt: 'created_at',

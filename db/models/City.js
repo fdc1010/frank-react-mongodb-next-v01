@@ -1,6 +1,7 @@
+"use strict";
 module.exports = mongoose => {
   const newSchema = new mongoose.Schema({
-    name: { type: String}
+    name: String
   }, {
     timestamps: {
       createdAt: 'created_at',

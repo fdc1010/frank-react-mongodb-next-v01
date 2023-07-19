@@ -1,6 +1,7 @@
+"use strict";
 const { SchemaTypes } = require("mongoose")
 
-module.exports = (mongoose) => {
+module.exports = mongoose => {
   const { ObjectId } = SchemaTypes;
   const newSchema = new mongoose.Schema(
     {
