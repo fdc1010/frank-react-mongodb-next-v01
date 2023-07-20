@@ -1,4 +1,4 @@
-import { Flex, Input, HStack } from "@chakra-ui/react"
+import { Flex, Input, HStack, Checkbox, Select } from "@chakra-ui/react"
 
 export default function ListControl() {
   return (
@@ -16,8 +16,11 @@ export default function ListControl() {
     >
       <HStack spacing="4" inlineSize="100%" borderColor="gray.400">
         <Input placeholder="Input value to filter" />
-        <Input placeholder="Filter by City,Factory" />
-        <Input placeholder="Sort by Order (Desc,Asc)" />
+        <Select placeholder='Filter' color="black">
+          <option value='City'>City</option>
+          <option value='Factory'>Factory</option>
+        </Select>
+        <Checkbox defaultChecked>Sort</Checkbox>
       </HStack>
     </Flex>
   )
