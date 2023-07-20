@@ -20,9 +20,9 @@ export default function List({ lists }) {
         initial="initial"
         animate="animate"
       >            
-        {lists.map((id, i) => (
+        {lists.map((data, i) => (
           <MotionBox variants={cardVariant} key={i}>
-            <Card id={id} />
+            <Card data={data} />
           </MotionBox>
         ))}
       </MotionSimpleGrid>

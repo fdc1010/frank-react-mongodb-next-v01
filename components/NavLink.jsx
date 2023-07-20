@@ -1,8 +1,8 @@
-import NextLink from "next/link"
-import { Flex, Icon, Text } from "@chakra-ui/react"
+import NextLink from "next/link";
+import { Flex, Icon, Text } from "@chakra-ui/react";
 
 export default function NavLink({ link, ...rest }) {
-  const { label, icon, href } = link
+  const { label, icon, href } = link;
 
   return (
     <NextLink href={href} passHref>
@@ -32,5 +32,5 @@ export default function NavLink({ link, ...rest }) {
           <Text fontSize="1.2rem">{label}</Text>
         </Flex>
     </NextLink>
-  )
+  );
 }

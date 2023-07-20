@@ -1,10 +1,11 @@
-import { IconButton, Flex, Text } from "@chakra-ui/react"
-import { FiMenu } from "react-icons/fi"
-import UserProfile from "./UserProfile"
+import { IconButton, Flex, Text } from "@chakra-ui/react";
+import { FiMenu } from "react-icons/fi";
+import UserProfile from "@components/UserProfile";
 
 export default function Header({ onOpen, ...rest }) {
   return (
     <Flex
+      ml={{ base: 0, md: 60 }}
       px="4"
       position="sticky"
       top="0"
@@ -33,8 +34,7 @@ export default function Header({ onOpen, ...rest }) {
       >
         Logo
       </Text>
-
       <UserProfile />
     </Flex>
-  )
+  );
 }

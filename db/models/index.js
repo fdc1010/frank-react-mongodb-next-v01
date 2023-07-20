@@ -4,6 +4,7 @@ const fs = require("fs")
 const path = require("path")
 const Mongoose = require("mongoose")
 const basename = path.basename(__filename)
+
 if (process.env.MONGODB_URI) {
   Mongoose.connect(process.env.MONGODB_URI)
 } else {
@@ -11,7 +12,7 @@ if (process.env.MONGODB_URI) {
   // throw new Error("Please check your connection string!")
 }
 
-const db = (mongoose) => {
+const db = () => {
   const m = {}
   const excludeElem = ["_app.js","_document.js","_error.js","index.jsx"]
   fs
@@ -22,12 +23,13 @@ const db = (mongoose) => {
       )
     })
     .forEach((file) => {
-      m[file.slice(0,file.length - 3)] = require(path.resolve(__dirname,file))(mongoose)
+      const model = require(path.resolve(__dirname, file))(Mongoose);
+      m[model.modelName] = model;
     })
   return m
 }
 
-const models = db(Mongoose)
+const models = db()
 const mongoose = Mongoose
 
 module.exports = mongoose

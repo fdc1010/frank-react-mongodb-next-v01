@@ -1,34 +1,15 @@
-import { Box, Flex, useToast } from "@chakra-ui/react"
-import { useEffect } from "react"
+import { Box, Flex, Text } from "@chakra-ui/react"
+import { first } from "lodash"
 
-export default function Card({ id }) {
-  const toast = useToast()
-  const { name, email, phone } = user
-  const toastMessage = (title, message, status) => {
-    toast({
-      title,
-      description: message,
-      status: status,
-      duration: 3000,
-      isClosable: true,
-    })
+export default function Card({ data, isType=false }) {
+  const { _id, name } = data
+  let lblName = name
+  let lblText = "City"
+  if(isType) {
+    const typename = data.type
+    lblName = first(typename).name
+    lblText = "Factory"
   }
-  const onDelete = (objId) => {
-    try {
-      toastMessage("User Deletion", "Successful", "success")
-    } catch (err) {
-      toastMessage(
-        "Error Catched.",
-        err?.message ?? "Opps there seems to be an error",
-        "error"
-      )
-    }
-  }
-  useEffect(() => {
-    if (!!error) toastMessage("Error Catched.", error, "error")
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [error])
-
   return (
     <Flex
       w="full"
@@ -40,25 +21,20 @@ export default function Card({ id }) {
       rounded="xl"
       shadow="lg"
       borderWidth="1px"
-      onClick={() => onDelete(id)}
     >
       <Box w="full" h="full">
-        <Box
-          w="100%"
-          position="relative"
-          overflow="hidden"
-          roundedTop="lg"
-        ></Box>
 
         <Box p="6">
           <Box fontWeight="semibold" as="h4" lineHeight="tight" isTruncated>
-            {name}
+            
           </Box>
 
-          <Box>{email}</Box>
+          <Box>{lblText}: {lblName}</Box>
 
           <Box as="span" ml="2" color="gray.600" fontSize="sm">
-            {phone}
+            {
+              !!data?.factory && data?.factory.map(elem=><Card data={elem} isType={true} key={elem._id} />)
+            }
           </Box>
         </Box>
       </Box>

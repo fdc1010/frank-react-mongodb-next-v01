@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true,
+  images: {
+    domains: ["res.cloudinary.com"],
+  },
   env: {
-    MONGODB_URI: "mongodb://localhost:27017/db_staging"
+    MONGODB_URI: "mongodb://localhost:27017/db_staging",
   },
   webpack: (config) => {
     config.resolve.fallback = {
@@ -10,9 +14,9 @@ const nextConfig = {
       dns: false,
       child_process: false,
       tls: false,
-    };
+    }
 
-    return config;
+    return config
   },
 }
 

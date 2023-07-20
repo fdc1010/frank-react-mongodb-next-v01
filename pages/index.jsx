@@ -1,29 +1,29 @@
 import React, { useEffect, useState } from "react"
 import { CircularProgress } from "@chakra-ui/react"
 import List from "@components/List"
+import { getAllList } from "@services/api"
+import ListControl from "@components/ListControl"
 
-export default function Home({allPosts}){
+export default function Home({ records }) {
   const [lists, setLists] = useState([])
   useEffect(() => {
-    fetch("http://localhost:3000/api/lists")
-    .then(res => res.json())
-    .then(data => {
-      setLists(data);
-    }).catch((e) => {console.log(e)});
-  }, []);
-  return lists.length > 0 ? <List lists={lists} /> : <CircularProgress isIndeterminate /> 
+    if (!!records) setLists(records)
+  }, [lists])
+  return lists.length > 0 ? (
+    <>
+      <ListControl />
+      <List lists={lists} />
+    </>
+  ) : (
+    <CircularProgress isIndeterminate />
+  )
 }
 
-export async function getServerSideProps(context) {
-  let res = await fetch("http://localhost:3000/api/lists", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  let allPosts = await res.json();
-
+export async function getServerSideProps() {
+  const records = await getAllList()
+    .then((rec) => rec.data)
+    .catch(() => [])
   return {
-    props: { allPosts },
-  };
+    props: { records },
+  }
 }
