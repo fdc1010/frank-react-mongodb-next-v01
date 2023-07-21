@@ -1,3 +1,4 @@
+
 import { Box, Flex, Text } from "@chakra-ui/react"
 import { first } from "lodash"
 
@@ -7,7 +8,7 @@ export default function Card({ data, isType=false }) {
   let lblText = "City"
   if(isType) {
     const typename = data.type
-    lblName = first(typename).name
+    lblName = first(typename)?.name
     lblText = "Factory"
   }
   return (
